@@ -15,8 +15,8 @@ class PostService @Autowired constructor(private var postRepository: PostReposit
    fun getOne(id: Long ): Post {
     return postRepository.findById(id).orElseThrow{ IllegalArgumentException("this post is not found")}
    }
-   fun save(post: Post): Post = postRepository.save(post)
-   fun update(id: Long, postDto: Post): Post {
+   fun savePost(post: Post): Post = postRepository.save(post)
+   fun updatePost(id: Long, postDto: Post): Post {
       try {
          val postFound = getOne(id)
          postFound.content = postDto.content
@@ -27,7 +27,7 @@ class PostService @Autowired constructor(private var postRepository: PostReposit
          throw IllegalArgumentException("error ..")
       }
    }
-   fun foo(id:Long): Boolean {
+   fun deletePost(id:Long): Boolean {
       postFound = getOne(id)
        try {
          postRepository.delete(postFound)
