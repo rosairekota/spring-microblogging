@@ -17,7 +17,8 @@ class PostController  @Autowired constructor(private val postService: PostServic
   @PostMapping("/posts")
   fun createPost(@RequestBody post: Post):Post= postService.savePost(post)
 
-  @PutMapping("/posts/{id}")
+  @PutMapping("/posts/{id}"
+  )
     fun updatePost(@PathVariable id: Long,@RequestBody post: Post): Post = postService.updatePost(id, post)
 
     @DeleteMapping("/posts/{id}")

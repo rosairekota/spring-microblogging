@@ -23,17 +23,17 @@ class PostService @Autowired constructor(private var postRepository: PostReposit
          postFound.userId = postDto.userId
          return postRepository.save(postFound)
       }
-      catch(Exception e) {
+      catch(e:Exception) {
          throw IllegalArgumentException("error ..")
       }
    }
-   fun deletePost(id:Long): Boolean {
-      postFound = getOne(id)
+   fun deletePost(id:Long): String{
+      val postFound = getOne(id)
        try {
          postRepository.delete(postFound)
          return "post deleted"
        }
-       catch(Exception e) {
+       catch(e:Exception) {
          return "error for "
        }
       
